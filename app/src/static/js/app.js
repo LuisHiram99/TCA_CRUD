@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000/api/v1/students";
+const API_URL = "/api/v1/students";
 
 function toggleForm(formId) {
     const form = document.getElementById(formId);
