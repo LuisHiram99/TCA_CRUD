@@ -13,7 +13,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def init_db():
-    DATABASE_URL = os.getenv("DATABASE_URL")
+    # Railway uses MYSQL_URL for MySQL databases
+    DATABASE_URL = os.getenv("MYSQL_URL") or os.getenv("DATABASE_URL")
+    
+    if not DATABASE_URL:
+        raise ValueError("No database URL found. Set MYSQL_URL or DATABASE_URL.")
     
     # Handle Railway's mysql:// format
     if DATABASE_URL.startswith("mysql://"):
